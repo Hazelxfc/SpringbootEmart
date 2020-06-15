@@ -1,0 +1,23 @@
+server:
+  port: 9004
+spring:  application:    name: zuul-service
+eureka:
+   instance:
+      preferIpAddress: true
+      instance-id: ${spring.cloud.client.ip-address}:${server.port}   #eureka页面显示IP地址：端口号 
+      lease-expiration-duration-in-seconds: 30
+      lease-renewal-interval-in-seconds: 10
+   client: 
+     registerWithEureka: true
+     fetchRegistry: true
+     serviceUrl:
+       defaultZone: http://localhost:9010/eureka/
+     healthcheck:
+      enabled: true
+zuul:
+  sensitiveHeaders: Access-Control-Allow-Origin,Cookie,Set-Cookie  #配置头部黑名单，它包含Zuul不会传播到下游服务的敏感头部。同时意识着Authorization将被放行
+#  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken#  prefix: /emart
+  routes:
+    user-service: /user/**
+    item-service: /item/**
+    order-service: /order/**

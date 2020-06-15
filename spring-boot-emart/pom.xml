@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-parent</artifactId>
+	<version>2.0.7.RELEASE</version>
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>emart</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-boot-emart</name>
+	<description>emart project for Spring Boot</description>
+	 
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF8</project.reporting.outputEncoding> 
+	</properties> 
+	
+	
+	
+	<dependencies>
+	    <dependency>
+	     <groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+	    </dependency> 
+		
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency> 
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.20</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>  
+        
+     <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.12</version>
+            </dependency> 
+        <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <scope>test</scope>
+            </dependency> 
+        <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
+            </dependency>
+            
+        <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+            </dependency>
+	</dependencies>
+	
+	<dependencyManagement>
+	<dependencies>
+	<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-dependencies</artifactId>
+	<!-- <version>Greenwich.RELEASE</version> -->
+	<version>Finchley.SR2</version>
+	<type>pom</type>
+	<scope>import</scope>
+	</dependency>
+	</dependencies>
+	</dependencyManagement>  
+	
+	<!-- <repositories>
+    <repository>
+	<id>spring-snapshots</id>
+	<name>Spring Snapshots</name>
+	<url>http://repo.spring.io/libs-snapshot-local</url>
+	<url>https://repo.spring.io/snapshot</url>
+	<url>http://repo.spring.io/release</url>
+	<snapshots>
+	<enabled>true</enabled>
+	</snapshots>
+	</repository>
+	<repository>
+	<id>spring-milestones</id>
+	<name>Spring Milestones</name>
+	 <url>https://repo.spring.io/milestone</url>  
+	<url>http://repo.spring.io/libs-milestone-local</url>
+	<snapshots>
+	<enabled>false</enabled>
+	</snapshots>
+	</repository>
+	<repository>
+	<id>spring-releases</id>
+	<name>Spring Releases</name>
+    <url>http://repo.spring.io/libs-release-local</url> 
+	<url>https://repo.spring.io/release</url>
+	<snapshots>
+	<enabled>false</enabled>
+	</snapshots>
+	</repository>  
+	</repositories>
+	
+	<pluginRepositories>
+	<pluginRepository>
+	<id>spring-snapshots</id>
+	<name>Spring Snapshots</name>
+	<url>http://repo.spring.io/libs-snapshot-local</url> 
+ <url>https://repo.spring.io/snapshot</url>
+	<snapshots>
+	<enabled>true</enabled>
+	</snapshots>
+	</pluginRepository>
+	<pluginRepository>
+	<id>spring-milestones</id>
+	<name>Spring Milestones</name>
+    <url>http://repo.spring.io/libs-milestone-local</url>  
+	<url>https://repo.spring.io/milestone</url>
+	<snapshots>
+	<enabled>true</enabled>
+	</snapshots></pluginRepository>
+	</pluginRepositories> 
+
+	
+	<build>
+	<defaultGoal>compile</defaultGoal>
+	<plugins>
+    <plugin>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+	<version>2.1.6.RELEASE</version>
+	<executions>
+	<execution>
+	<phase>none</phase>
+	</execution>
+    </executions>
+    </plugin>  
+	</plugins>
+	</build> -->  
+
+	<packaging>pom</packaging>
+	<modules>
+	<module>item-service</module>
+	<module>user-service</module>
+	<module>order-service</module>
+	<module>auth-service</module>
+	<module>eureka-service</module>
+	<module>zuul-service</module>
+	</modules>
+</project>
