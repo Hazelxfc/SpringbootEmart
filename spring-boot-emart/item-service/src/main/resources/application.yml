@@ -16,6 +16,4 @@ eureka:
   client:
     serviceUrl: 
       defaultZone: http://localhost:9010/eureka/
-  instance:
-    preferIpAddress: true #使用ip注册
         

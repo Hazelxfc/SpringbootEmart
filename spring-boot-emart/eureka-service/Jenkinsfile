@@ -1,0 +1,29 @@
+def EMART_PATH ="C:\\Users\\FanChaoXu\\eclipse-workspace\\spring-boot-emart\\eureka-service"
+
+pipeline {
+   agent any
+
+   stages {
+      stage('pull code') {
+         steps {
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git01', url: 'https://github.com/Hazelxfc/SpringBootEmart.git']]])
+         }
+      } 
+       stage('build') {
+         steps {
+				bat """
+				    cd ${EMART_PATH}
+	        		mvn clean install -DskipTests
+					echo 'building docker image...';
+	        		docker build -t eureka-service .
+				"""
+	    	}
+      } 
+      stage('deploy') {
+	    	steps {
+	     		echo 'deploying image...';
+	        	bat 'docker run -p 127.0.0.1:9005:9005 eureka-service'
+	    	}
+	    }
+   }
+}
